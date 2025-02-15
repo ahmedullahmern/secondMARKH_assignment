@@ -1,6 +1,6 @@
 import express from 'express'
-import Contact from '../models/contact';
-const nodemailer = require('nodemailer');
+import Contact from '../models/contact.js';
+import nodemailer from "nodemailer";
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.post('/submit', async (req, res) => {
         await contact.save();
 
         const transporter = nodemailer.createTransport({
-            service: 'gmail', 
+            service: 'gmail',
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS,
@@ -34,4 +34,4 @@ router.post('/submit', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

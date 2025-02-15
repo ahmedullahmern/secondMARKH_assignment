@@ -2,7 +2,7 @@ import express from "express"
 import mongoose from "mongoose";
 import 'dotenv/config';
 import cors from 'cors';
-import contactRoutes from './routes/contact.js'
+import contactRoutes from './routers/contact.js'
 const app = express()
 const PORT = 3000;
 
