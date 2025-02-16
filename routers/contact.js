@@ -20,17 +20,19 @@ router.post('/submit', async (req, res) => {
         });
 
         const mailOptions = {
-            from: email,
-            to: process.env.EMAIL_USER,
+            from: process.env.EMAIL_USER,
+            to: email,
             subject: `New Contact Form Submission from ${name}`,
             text: `Message: ${message}\n\nFrom: ${name}\nEmail: ${email}`,
         };
+
+
 
         await transporter.sendMail(mailOptions);
 
         res.status(200).json({ success: true, message: 'Form submitted successfully' });
     } catch (error) {
-        res.status(500).json({ success: false, message: 'Error submitting form' });
+        res.status(500).json({ success: false, error });
     }
 });
 
